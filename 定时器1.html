@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #pao{
+            width: 100px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            left:0;
+            top:0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="pao">小方块
+
+    df<br>
+    df<br>
+    df<br>
+    df<br>
+    df<br>
+
+</div>
+<script>
+    var pao=document.getElementById("pao");
+    var  style=window.getComputedStyle(pao);
+    var h=style.height;
+
+    pao.style.height="0";
+    var t;
+    function  slide() {
+        pao.style.height=parseInt(pao.style.height)+4+"px";
+        if(pao.style.height==h){
+            clearTimeout(t);
+        }else{
+            t=setTimeout(slide,80)
+        }
+
+    }slide()
+
+</script>
+
+</body>
+</html>

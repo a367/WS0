@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        #dnf1{
+            width:350px;
+            height:250px;
+            text-align: center;
+            background:url("images/4.jpg");
+            font-size: 50px;
+            position: absolute;
+            left: 300px;
+            top: 100px;
+            display: none;
+            
+        }
+        #df{
+            width:150px;
+            height: 150px;
+
+
+        }
+        #id{
+            width:150px;
+            height: 150px;
+            text-align: center;
+            background-color:grey;
+            font-size: 50px;
+
+        }
+        #di{
+            width:150px;
+            height: 150px;
+            text-align: center;
+            background-color:grey;
+            font-size: 50px;
+
+        }
+
+
+
+    </style>
+</head>
+<body>
+<input type="button" value="显示" id="id">
+<input type="button" value="隐藏" id="di">
+
+<div id="dnf">方块</div>
+<div id="dnf1"></div>
+
+<script>
+
+
+
+    var ro=document.getElementById("dnf1")
+    var r=document.getElementById("id");
+    r.onclick=function () {
+        ro.style.display="block";
+
+    }
+    var r1=document.getElementById("di");
+
+    r1.onclick=function () {
+        ro.style.display="none";
+    }
+
+
+
+
+    
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

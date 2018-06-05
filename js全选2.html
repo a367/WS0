@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body{
+            font-size: 14px;
+        }
+        .box #main{
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            line-height: 36px;
+        }
+        .box #main th, .box #main td{
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        .box #main tr:first-child{
+            background: yellowgreen;
+            color: #fff;
+        }
+        .box #main tr:hover{
+            background: #eee;
+        }
+
+        .box1{
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+            line-height: 36px;
+            margin-top: 100px;
+
+        }
+        .box1 #df #bu{
+            width: 100px;
+            background-color: aqua;
+        }
+        #mask{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: aqua;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="mask">
+
+</div>
+<div class="box1">
+    <div id="df">
+        编号：
+        <input type="text" class="df1"  autofocus="" placeholder="四位数字的编号" ><br>
+        姓名：
+        <input type="text" class="df2"  autofocus="" placeholder="姓名" ><br>
+        年龄：
+        <input type="text" class="df3"  autofocus="" placeholder="两位数字的年龄" ><br>
+        地址：
+        <input type="text" class="df4"  autofocus="" placeholder="地址"><br>
+        添加：
+        <input type="button" id="bu" >
+
+    </div>
+
+</div>
+<div class="box">
+<table id="main">
+<thead>
+    <tr>
+            <th width="30%">操作</th>
+            <th width="15%">编号</th>
+            <th width="20%">姓名</th>
+            <th width="15%">年龄</th>
+            <th width="20%">地址</th>
+    </tr>
+</thead>
+    <tbody>
+    <tr>
+        <th ><a href="#">修改</a>  <a href="#">删除</a></th>
+        <th >100</th>
+        <th >乔丹</th>
+        <th >35</th>
+        <th >美国</th>
+    </tr>
+    <tr>
+        <th ><a href="#">修改</a>  <a href="#">删除</a></th>
+        <th >100</th>
+        <th >乔丹</th>
+        <th >35</th>
+        <th >美国</th>
+    </tr>
+    <tr>
+        <th ><a href="#">修改</a>  <a href="#">删除</a></th>
+        <th >100</th>
+        <th >乔丹</th>
+        <th >35</th>
+        <th >美国</th>
+    </tr>
+    <tr>
+        <th ><a href="#">修改</a>  <a href="#">删除</a></th>
+        <th >100</th>
+        <th >乔丹</th>
+        <th >35</th>
+        <th >美国</th>
+    </tr>
+    <tr>
+        <th ><a href="#">修改</a>  <a href="#">删除</a></th>
+        <th >100</th>
+        <th >乔丹</th>
+        <th >35</th>
+        <th >美国</th>
+    </tr>
+    </tbody>
+</table>
+</div>
+<script>
+    /*/*
+
+     1. 找到“添加”按钮，为其绑定click事件
+     2. 在click事件中，需要处理：
+       A，获取各个输入框的值
+       B，校验是否为空
+       C，校验成功（即都不为空的情况下），动态产生对应的tr和td
+     并将td放入tr中，将tr放入table中
+
+     */
+    var add=document.getElementById("bu");
+    var df1=document.getElementsByClassName("df1")[0];
+    var df2=document.getElementsByClassName("df2")[0];
+    var df3=document.getElementsByClassName("df3")[0];
+    var df4=document.getElementsByClassName("df4")[0];
+    var main=document.getElementById("main");
+    var a=document.getElementsByTagName("a");
+    var mask=document.getElementById("mask");
+
+    //找到tbody, 在tbody中插入tr,在tr中插入5个td，并将内容置于其中
+    add.onclick=function () {
+        var b=checkInput();
+        if(b){
+            var tr=main.insertRow();
+            var bun=tr.insertCell();
+            var oAupdate=document.createElement("a");
+            oAupdate.href="";
+            oAupdate.innerHTML="修改";
+            var oAdelete=document.createElement("a");
+            oAdelete.href="";
+            oAdelete.innerHTML="删除";
+
+            bun.appendChild(oAupdate);
+            bun.appendChild(oAdelete);
+
+
+            //点击修改
+
+            oAupdate.onclick=popUI;
+            oAdelete.onclick=userDelete;
+
+            var tbody=document.getElementsByName("tr");
+            for(var i=0;i<tbody.length;i++){
+                var sa=tbody[i].getElementsByTagName("a");
+
+              sa[1].onclick=userDelete;
+
+
+
+            }
+            
+            var td1=tr.insertCell();
+            td1.innerHTML = df1.value;
+            var td2=tr.insertCell();
+            td2.innerHTML = df2.value;
+            var td3=tr.insertCell();
+            td3.innerHTML = df3.value;
+            var td4=tr.insertCell();
+            td4.innerHTML = df4.value;
+
+        }
+        function checkInput(){
+            var f=true;
+            if(df1.value==""){
+                alert("编号不能为空");
+                df1.focus();
+                f=false;
+            }else if(df2.value==""){
+                alert("姓名不能为空");
+                df2.focus();
+                f=false;
+            }else if(df3.value==""){
+                alert("年龄不能为空");
+                df3.focus();
+                f = false;
+            }else if(df4.value==""){
+                alert("地址不能为空");
+                df4.focus();
+                f=false;
+            }
+            return f;
+        }
+        //修改用户
+        function popUI() {
+            mask.style.display="block";
+
+        }
+        //删除用户
+        function userDelete(){
+            //让用户确认
+            var r = confirm("您确定要删除这条信息吗?");
+            //如果用户确认删除再真正删除
+            if (r) {
+                //真正删除,
+                main.removeChild(tbody);
+            }
+            return false;
+        }
+    }
+</script>
+</body>
+</html>

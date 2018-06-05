@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var arr=["马超","关羽","张飞","黄忠","赵子龙"];
+
+    console.log(arr);
+
+
+   // var MyArray=new Array("aaa","bbb","ccc","ddd","eee","fff","hhh");
+    //   console.log(MyArray);
+      // var s;
+
+       //for(i=0;i<MyArray.length;i++){
+        //console.log(MyArray[i]);
+      // }
+
+   //  for(s in MyArray){
+        //document.write(MyArray[s]+"<br/>");
+    //}
+    var arr1=["诸葛亮","周瑜"];
+
+    console.log( arr.concat(arr1));
+
+    arr2=console.log(arr.toString());
+
+
+    arr3=console.log(arr.join("--"));
+    console.log(arr);
+    arr4= arr.pop();
+
+   console.log(arr4);
+
+
+   console.log(arr1.push("赵子龙"));
+   console.log(arr1);
+   a=arr1.reverse();
+    console.log(a);
+    //删除并返回数组的第一个元素
+    b=arr.shift();
+    console.log(b);
+   // 从某个已有的数组返回选定的元素//
+    c=arr.slice(1);
+
+    console.log(c);
+    console.log(arr);
+    //对数组的元素进行排序
+    var sd=["44","89","99","1"];
+    console.log(sd.sort());
+    //删除元素，并向数组添加新元素。
+    sd.splice(3,1,"100");
+    console.log(sd);
+    //向数组的开头添加一个或更多元素，并返回新的长度
+    sd.unshift(66);
+    console.log(sd);
+    arr.valueOf();
+    console.log(arr);
+
+
+
+
+
+</script>
+
+</body>
+</html>

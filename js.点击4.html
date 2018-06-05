@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0px;
+            padding:0px;
+        }
+        html,body{
+            width:100%;
+            height: 100%;
+            z-index: 3;
+        }
+        #mask{
+            position: absolute;
+            left: 0px;
+            top:0px;
+            width: 100%;
+            height: 100%;
+            background:rgba(0,0,0,0.3);
+            z-index: 1;
+            display: none;
+
+
+        }
+        .main{
+            width: 100%;
+            height: 100%;
+            z-index: 6;
+            position: relative;
+        }
+        .main a{
+            position: absolute;
+            right:60px;
+            top:20px;
+            z-index:8 ;
+        }
+        #popwindow{
+             width:300px;
+            height: 400px;
+            position: absolute;
+            top:180px;
+            left: 600px;
+            background-color: aqua;
+            z-index:8 ;
+            display: none;
+        }
+        #popwindow .popclose{
+            position: absolute;
+            top:6px;
+            right: 10px;
+            font-size: 20px;
+            color: #dddddd;
+
+        }
+        #popwindow .popclose:hover{
+            cursor: pointer;
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+<div id="mask"></div>
+
+<div class="main">
+    <a href="#">登录</a>
+</div>
+<div id="popwindow">
+    <div class="popclose">x</div>
+</div>
+
+
+<script>
+    var a=document.getElementsByClassName("main")[0].getElementsByTagName("a")[0];
+    var mask=document.getElementById("mask");
+    var popwindow=document.getElementById("popwindow");
+    var popclose=document.getElementsByClassName("popclose")[0];
+    a.onclick=function () {
+        mask.style.display="block";
+        popwindow.style.display="block";
+        return false;
+    };
+    popclose.onclick=function () {
+        mask.style.display="none";
+        popwindow.style.display="none";
+    };
+
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style >
+
+
+        .box {
+            heigth: 30px;
+            width: 30px;
+            background: red;
+            float: left;
+            font-size: 30px;
+            display: block;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<h4 id="a">今天阳光好</h4>
+<h4 id="b">天气好</h4>
+
+<div class="box1">我必定能战胜自己</div>
+<div class="box">你必定能战胜自己</div>
+<div class="box">他必定能战胜自己</div>
+<div class="box">她必定能战胜自己</div>
+
+<script>
+
+
+      var s=document.getElementById("a");
+      console.log(s);
+      s.style.color="grey";
+
+      var a=document.getElementsByClassName("box");
+      console.log(e);
+
+      var e=document.getElementsByClassName("box1");
+      console.log(e);
+      s.innerHTML="你好";
+
+      var  w=document.getElementsByTagName("h4");
+      for(var i=0;i<w.length;i++){
+          w[i].style.color="black";
+          w[i].style.display="block";
+
+      }
+      console.log(w);
+    a[1].style.color="purple";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

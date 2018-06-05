@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="\WS\lib\layui\css\layui.css" >
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+</head>
+<body>
+
+<blockquote class="layui-elem-quote">
+
+    <a class="layui-btn layui-btn-normal" href="table.html" target="_blank">表格模块示例</a>
+</blockquote>
+
+<fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+    <legend>默认表格</legend>
+</fieldset>
+
+<input type="button"  value="显示数据" id="loginbtn">
+<input type="button"  value="添加数据" id="loginbtn1">
+<input type="button"  value="删除数据" id="loginbtn2">
+<input type="button"  value="修改数据" id="loginbtn3 ">
+<div class="layui-form">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="200">
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>name</th>
+            <th>password</th>
+            <th>sex</th>
+            <th>address</th>
+            <th>phone</th>
+        </tr>
+        </thead>
+
+        <tbody id="tboy">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+</div>
+
+<script src="lib/jquery-1.11.1.js"> </script>
+
+<script>
+    $("#loginbtn").click(function() {
+        //获取用户名和密码，用ajax将其发送给后端的登录api
+        $.ajax({
+            type: "post",
+            url: "http://localhost:8080/user",
+            xhrFields: {
+                withCredentials: true
+            },
+            crossDomain: true,
+//            data: "username=" + $("#username").val() + "&userpwd=" + $("#userpwd").val(),
+            success: function(res){
+                console.log(res);
+                var s = "";
+                for(var j in res){
+
+                    s += "<tr></tr><td>"+res[j].id+"</td>" +
+                        "<td>"+res[j].name+"</td>" +
+                        "<td>"+res[j].password+"</td>" +
+                        "<td>"+res[j].sex+"</td>" +
+                        "<td>"+res[j].address+"</td>" +
+                        "<td>"+res[j].phone+"</td></tr>";
+                }
+               $("#tboy").html(s)
+            }
+        });
+    });
+
+</script>
+</body>
+</html>

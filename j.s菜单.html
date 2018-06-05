@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 150px;
+            height: 300px;
+            background-color: aqua;
+
+        }
+        #box .li:hover{
+            cursor: pointer;
+            background-color: #eeeeee;
+        }
+         .li ul{
+           overflow: hidden;
+         }
+
+
+
+
+
+    </style>
+</head>
+<body>
+<ul id="box">
+    <li class="li">
+        <ul class="sub" style="height: 0px">
+            <li>aaaaaa</li>
+            <li>aaaaaa</li>
+            <li>aaaaaa</li>
+            <li>aaaaaa</li>
+        </ul>
+
+    </li >
+    <li class="li">
+        <ul class="sub" style="height: 0px">
+            <li>bbbbbb</li>
+            <li>bbbbbb</li>
+            <li>bbbbbb</li>
+            <li>bbbbbb</li>
+        </ul>
+    </li>
+    <li class="li">
+        <ul class="sub" style="height: 0px">
+            <li>cccccc</li>
+            <li>cccccc</li>
+            <li>cccccc</li>
+            <li>cccccc</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var  li=document.getElementsByClassName("li");
+
+    var sub=document.getElementsByTagName("sub");
+    var  height=new Array();
+
+
+    for(var i=0;i<li.length;i++){
+          height[i]=sub[i].offsetHeight;
+          sub[i].style.length="0px";
+          sub[i]._status="none";
+
+
+
+
+          li[i]._index=i;
+          li[i].onclick=function () {
+              console.log("aaaaaa")
+              var ul=this.getElementsByTagName("ul")[0];
+              if(ul._status=="none"){
+                  slideDown(ul,1,3,height[this._index]);
+                  ul._status="block";
+              }else if(ul._status=="block"){
+                  slideUp();
+                  ul._status="none";
+              }
+          }
+    }
+    function slideDown(obj,step,interval,height) {
+        console.log("bbbbbb");
+        var t=setInterval( function () {
+         obj.style.height=obj.offsetHeight+step+"px";
+         if(obj.offsetHeight>=height){
+             clearInterval(t);
+         }
+
+
+        }, interval);
+    }
+    function  slideUp() {
+
+    }
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

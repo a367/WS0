@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #pao{
+            width: 100px;
+            height: 400px;
+            background-color: red;
+            position: absolute;
+            left:0;
+            top:0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div id="pao">小方块
+
+    df<br>
+    df<br>
+    df<br>
+    df<br>
+    df<br>
+
+</div>
+<script>
+
+
+    var pao=document.getElementById("pao");
+    var e;
+    function move(){
+        if(pao.offsetLeft>=20){
+            clearTimeout(e);
+        }else {
+            var speed=Math.ceil(100-pao.offsetLeft/10);
+        }
+
+
+        pao.style.left=pao.offsetLeft + 6 +"px";
+        //console.log(pao.offsetLeft);
+        e= window.setTimeout(move,100);
+//        console.log("a");
+    }
+    move();
+</script>
+
+</body>
+</html>
